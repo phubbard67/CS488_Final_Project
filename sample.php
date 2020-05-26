@@ -211,152 +211,152 @@ $xmlstr = <<<XML
 
     <ATTRIBUTES>
         <ATTRIBUTE NAME="object-type" ITEM-TYPE="O" DATA-TYPE="str">
-            <ATTRVALUE ITEM-ID="1">
+            <ATTRVALUE ITEMID="1">
                 <COLVALUE>paper</COLVALUE>
             </ATTRVALUE>
-            <ATTRVALUE ITEM-ID="2">
+            <ATTRVALUE ITEMID="2">
                 <COLVALUE>paper</COLVALUE>
             </ATTRVALUE>
-            <ATTRVALUE ITEM-ID="1137776">
+            <ATTRVALUE ITEMID="1137776">
                 <COLVALUE>person</COLVALUE>
             </ATTRVALUE>
-            <ATTRVALUE ITEM-ID="1137777">
+            <ATTRVALUE ITEMID="1137777">
                 <COLVALUE>person</COLVALUE>
             </ATTRVALUE>
-            <ATTRVALUE ITEM-ID="1137778">
+            <ATTRVALUE ITEMID="1137778">
                 <COLVALUE>person</COLVALUE>
             </ATTRVALUE>
-            <ATTRVALUE ITEM-ID="1137779">
+            <ATTRVALUE ITEMID="1137779">
                 <COLVALUE>person</COLVALUE>
             </ATTRVALUE>
 		</ATTRIBUTE>
 		
 		<ATTRIBUTE NAME="link-type" ITEM-TYPE="L" DATA-TYPE="str">
-            <ATTR-VALUE ITEM-ID="1">
-                <COL-VALUE>author-of</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="10">
-                <COL-VALUE>editor-of</COL-VALUE>
-            </ATTR-VALUE>
+            <ATTRVALUE ITEMID="1">
+                <COLVALUE>author-of</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEMID="10">
+                <COLVALUE>editor-of</COLVALUE>
+            </ATTRVALUE>
         </ATTRIBUTE>
 		
 		<ATTRIBUTE NAME="conference" ITEM-TYPE="O" DATA-TYPE="str">
-            <ATTR-VALUE ITEM-ID="1192711">
-               <COL-VALUE>WSE</COL-VALUE>
-            </ATTR-VALUE>
-	        <ATTR-VALUE ITEM-ID="1188428">
-              <COL-VALUE>ICSE Workshop on SE-HCI</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="1188250">
-              <COL-VALUE>International Conference on Computational Science</COL-VALUE>
-             </ATTR-VALUE>
+            <ATTRVALUE ITEMID="1192711">
+               <COLVALUE>WSE</COLVALUE>
+            </ATTRVALUE>
+	        <ATTRVALUE ITEMID="1188428">
+              <COLVALUE>ICSE Workshop on SE-HCI</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEMID="1188250">
+              <COLVALUE>International Conference on Computational Science</COLVALUE>
+             </ATTRVALUE>
         </ATTRIBUTE>
 
         <ATTRIBUTE NAME="isbn" ITEM-TYPE="O" DATA-TYPE="str">
-           <ATTR-VALUE ITEM-ID="1185822">
-                <COL-VALUE>3-540-54594-8</COL-VALUE>
-           </ATTR-VALUE>
-           <ATTR-VALUE ITEM-ID="1185823">
-                <COL-VALUE>3-540-57507-3</COL-VALUE>
-           </ATTR-VALUE>
+           <ATTRVALUE ITEMID="1185822">
+                <COLVALUE>3-540-54594-8</COLVALUE>
+           </ATTRVALUE>
+           <ATTRVALUE ITEMID="1185823">
+                <COLVALUE>3-540-57507-3</COLVALUE>
+           </ATTRVALUE>
 
         </ATTRIBUTE>
         
 		<ATTRIBUTE NAME="name" ITEM-TYPE="O" DATA-TYPE="str">
-           <ATTR-VALUE ITEM-ID="781596">
-              <COL-VALUE>Maurizio Pighin</COL-VALUE>
-           </ATTR-VALUE>
-           <ATTR-VALUE ITEM-ID="768022">
-                <COL-VALUE>Arpad Kelemen</COL-VALUE>
-           </ATTR-VALUE>
+           <ATTRVALUE ITEMID="781596">
+              <COLVALUE>Maurizio Pighin</COLVALUE>
+           </ATTRVALUE>
+           <ATTRVALUE ITEMID="768022">
+                <COLVALUE>Arpad Kelemen</COLVALUE>
+           </ATTRVALUE>
         </ATTRIBUTE>
 
 		<ATTRIBUTE NAME="publisher" ITEM-TYPE="O" DATA-TYPE="str">
-           <ATTR-VALUE ITEM-ID="1185822">
-                <COL-VALUE>Springer</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="1185844">
-                <COL-VALUE>IEEE Computer Society</COL-VALUE>
-            </ATTR-VALUE>
+           <ATTRVALUE ITEMID="1185822">
+                <COLVALUE>Springer</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEMID="1185844">
+                <COLVALUE>IEEE Computer Society</COLVALUE>
+            </ATTRVALUE>
 
         </ATTRIBUTE>
         
 		<ATTRIBUTE NAME="school" ITEM-TYPE="O" DATA-TYPE="str">
-            <ATTR-VALUE ITEM-ID="1200023">
-                <COL-VALUE>Univ. of Wisconsin-Madison</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="1200035">
-                <COL-VALUE>Stanford University, Department of Computer Science</COL-VALUE>
-            </ATTR-VALUE>
+            <ATTRVALUE ITEMID="1200023">
+                <COLVALUE>Univ. of Wisconsin-Madison</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEMID="1200035">
+                <COLVALUE>Stanford University, Department of Computer Science</COLVALUE>
+            </ATTRVALUE>
         </ATTRIBUTE>
 
         <ATTRIBUTE NAME="series" ITEM-TYPE="O" DATA-TYPE="str">
-            <ATTR-VALUE ITEM-ID="1185822">
-                <COL-VALUE>Lecture Notes in Computer Science</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="1185841">
-                <COL-VALUE>Universitat Trier, Mathematik/Informatik, Forschungsbericht</COL-VALUE>
-            </ATTR-VALUE>
+            <ATTRVALUE ITEMID="1185822">
+                <COLVALUE>Lecture Notes in Computer Science</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEMID="1185841">
+                <COLVALUE>Universitat Trier, Mathematik/Informatik, Forschungsbericht</COLVALUE>
+            </ATTRVALUE>
        </ATTRIBUTE>
 
         <ATTRIBUTE NAME="title" ITEM-TYPE="O" DATA-TYPE="str">
-            <ATTR-VALUE ITEM-ID="1">
-                <COL-VALUE>Fuzzy Sets and Their Applications to Artificial Intelligence.</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="7">
-                <COL-VALUE>Operating Systems Enhancements for Distributed Shared Memory.</COL-VALUE>
-            </ATTR-VALUE>
+            <ATTRVALUE ITEMID="1">
+                <COLVALUE>Fuzzy Sets and Their Applications to Artificial Intelligence.</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEMID="7">
+                <COLVALUE>Operating Systems Enhancements for Distributed Shared Memory.</COLVALUE>
+            </ATTRVALUE>
        </ATTRIBUTE>
 
         <ATTRIBUTE NAME="url" ITEM-TYPE="O" DATA-TYPE="str">
-            <ATTR-VALUE ITEM-ID="1194512">
-                <COL-VALUE>http://www.cis.hut.fi/nnrc/nnrc-programs.html</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="1194519">
-                <COL-VALUE>http://www.w3.org/Protocols/HTTP/1.1/spec.html</COL-VALUE>
-            </ATTR-VALUE>
+            <ATTRVALUE ITEMID="1194512">
+                <COLVALUE>http://www.cis.hut.fi/nnrc/nnrc-programs.html</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEMID="1194519">
+                <COLVALUE>http://www.w3.org/Protocols/HTTP/1.1/spec.html</COLVALUE>
+            </ATTRVALUE>
        </ATTRIBUTE>
 
         <ATTRIBUTE NAME="volume" ITEM-TYPE="O" DATA-TYPE="str">
-            <ATTR-VALUE ITEM-ID="1185822">
-                <COL-VALUE>546</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="1185823">
-                <COL-VALUE>759</COL-VALUE>
-            </ATTR-VALUE>
+            <ATTRVALUE ITEMID="1185822">
+                <COLVALUE>546</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEMID="1185823">
+                <COLVALUE>759</COLVALUE>
+            </ATTRVALUE>
       </ATTRIBUTE>
 
         <ATTRIBUTE NAME="year" ITEM-TYPE="O" DATA-TYPE="str">
-            <ATTR-VALUE ITEM-ID="1200022">
-                <COL-VALUE>2006</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="1200023">
-                <COL-VALUE>1992</COL-VALUE>
-            </ATTR-VALUE>
+            <ATTRVALUE ITEMID="1200022">
+                <COLVALUE>2006</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEMID="1200023">
+                <COLVALUE>1992</COLVALUE>
+            </ATTRVALUE>
       </ATTRIBUTE>
 
         <ATTRIBUTE NAME="month" ITEM-TYPE="L" DATA-TYPE="str">
-             <ATTR-VALUE ITEM-ID="380565">
-                <COL-VALUE>February</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="411243">
-                <COL-VALUE>July</COL-VALUE>
-            </ATTR-VALUE>
+             <ATTRVALUE ITEMID="380565">
+                <COLVALUE>February</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEMID="411243">
+                <COLVALUE>July</COLVALUE>
+            </ATTRVALUE>
      </ATTRIBUTE>
 
         <ATTRIBUTE NAME="number" ITEM-TYPE="L" DATA-TYPE="str">
-            <ATTR-VALUE ITEM-ID="723">
-                <COL-VALUE>1</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="725">
-                <COL-VALUE>2</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="734">
-                <COL-VALUE>1-2</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="747">
-                <COL-VALUE>1-3</COL-VALUE>
-            </ATTR-VALUE>
+            <ATTRVALUE ITEMID="723">
+                <COLVALUE>1</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEMID="725">
+                <COLVALUE>2</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEMID="734">
+                <COLVALUE>1-2</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEMID="747">
+                <COLVALUE>1-3</COLVALUE>
+            </ATTRVALUE>
      </ATTRIBUTE>
 	 
   </ATTRIBUTES>
