@@ -211,24 +211,24 @@ $xmlstr = <<<XML
 
     <ATTRIBUTES>
         <ATTRIBUTE NAME="object-type" ITEM-TYPE="O" DATA-TYPE="str">
-            <ATTR-VALUE ITEM-ID="1">
-                <COL-VALUE>paper</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="2">
-                <COL-VALUE>paper</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="1137776">
-                <COL-VALUE>person</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="1137777">
-                <COL-VALUE>person</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="1137778">
-                <COL-VALUE>person</COL-VALUE>
-            </ATTR-VALUE>
-            <ATTR-VALUE ITEM-ID="1137779">
-                <COL-VALUE>person</COL-VALUE>
-            </ATTR-VALUE>
+            <ATTRVALUE ITEM-ID="1">
+                <COLVALUE>paper</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEM-ID="2">
+                <COLVALUE>paper</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEM-ID="1137776">
+                <COLVALUE>person</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEM-ID="1137777">
+                <COLVALUE>person</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEM-ID="1137778">
+                <COLVALUE>person</COLVALUE>
+            </ATTRVALUE>
+            <ATTRVALUE ITEM-ID="1137779">
+                <COLVALUE>person</COLVALUE>
+            </ATTRVALUE>
 		</ATTRIBUTE>
 		
 		<ATTRIBUTE NAME="link-type" ITEM-TYPE="L" DATA-TYPE="str">
