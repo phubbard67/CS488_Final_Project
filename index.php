@@ -6,7 +6,7 @@
  <?php 
     include "sample.php";
     $data = new SimpleXMLElement($xmlstr);
-    echo $data->ATTRIBUTES['ATTRIBUTE'][1]['ATTR-VALUE'][0]['COL-VALUE'];
+    echo $data->ATTRIBUTES->ATTRIBUTE[0]->ATTRVALUE[0]->COLVALUE;
 
     //----------Taken from https://stackify.com/how-to-log-to-console-in-php/
     function console_log($output, $with_script_tags = true) {
