@@ -1,6 +1,6 @@
 <html>
  <head>
-  <title>PHP Test</title>
+  <title>CS488 Final Project</title>
  </head>
  <body>
  <?php 
