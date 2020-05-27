@@ -104,6 +104,8 @@ $xmlstr = <<<XML
         <OBJECT ID="98"/>
         <OBJECT ID="99"/>
         <OBJECT ID="100"/>
+        <OBJECT ID="578172"/>
+        <OBJECT ID="768022"/>
     </OBJECTS>
 
     <LINKS>
@@ -207,6 +209,7 @@ $xmlstr = <<<XML
         <LINK ID="98" O1-ID="19" O2-ID="1185275"/>
         <LINK ID="99" O1-ID="728575" O2-ID="20"/>
         <LINK ID="100" O1-ID="728576" O2-ID="20"/>
+        <LINK ID="1929398" O1-ID="768022" O2-ID="578172"/>
     </LINKS>
 
     <ATTRIBUTES>
@@ -215,6 +218,9 @@ $xmlstr = <<<XML
                 <COL-VALUE>paper</COL-VALUE>
             </ATTR-VALUE>
             <ATTR-VALUE ITEM-ID="2">
+                <COL-VALUE>paper</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="578172">
                 <COL-VALUE>paper</COL-VALUE>
             </ATTR-VALUE>
             <ATTR-VALUE ITEM-ID="1137776">
@@ -229,6 +235,9 @@ $xmlstr = <<<XML
             <ATTR-VALUE ITEM-ID="1137779">
                 <COL-VALUE>person</COL-VALUE>
             </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="768022">
+                <COL-VALUE>person</COL-VALUE>
+            </ATTR-VALUE>
 		</ATTRIBUTE>
 		
 		<ATTRIBUTE NAME="link-type" ITEM-TYPE="L" DATA-TYPE="str">
@@ -237,6 +246,9 @@ $xmlstr = <<<XML
             </ATTRVALUE>
             <ATTR-VALUE ITEM-ID="10">
                 <COL-VALUE>editor-of</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="768022">
+                <COL-VALUE>author-of</COL-VALUE>
             </ATTR-VALUE>
         </ATTRIBUTE>
 		
@@ -305,6 +317,9 @@ $xmlstr = <<<XML
             </ATTR-VALUE>
             <ATTR-VALUE ITEM-ID="7">
                 <COL-VALUE>Operating Systems Enhancements for Distributed Shared Memory.</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="578172">
+                <COL-VALUE>Adaptive Generalized Estimation Equation with Bayes Classifier for the Job Assignment Problem.</COL-VALUE>
             </ATTR-VALUE>
        </ATTRIBUTE>
 
