@@ -4,13 +4,9 @@
  </head>
  <body>
  <?php 
-    include "sample.php";
-    $data = new SimpleXMLElement($xmlstr);
-    //turns the data to json
-    $jsonData = json_encode($xmlstr);
-
-    //----------Taken from https://stackify.com/how-to-log-to-console-in-php/
-    function console_log($output, $with_script_tags = true) {
+     //----------Taken from https://stackify.com/how-to-log-to-console-in-php/
+     //console.log function for php
+     function console_log($output, $with_script_tags = true) {
         $js_code = 'console.log(' . json_encode($output, JSON_HEX_TAG) . ');';
         if ($with_script_tags) {
             $js_code = '<script>' . $js_code . '</script>';
@@ -18,6 +14,17 @@
         echo $js_code;
     }
     //---------end taken from https://stackify.com/how-to-log-to-console-in-php/
+
+
+    //include the sample data that we turned into a 
+    //php document that has a php 'xml string'. 
+    include "sample.php";
+
+    //turn the xml string data into an object
+    $data = new SimpleXMLElement($xmlstr);
+
+    //turns the xml object to json
+    $jsonData = json_encode($xmlstr);
 
     //------------------------------------------Examples
     //shows the object
