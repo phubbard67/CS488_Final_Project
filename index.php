@@ -51,7 +51,7 @@
     //get a particular item from an xml object
     //this example gets one of the author's names in attribute 4
     console_log($data->ATTRIBUTES->ATTRIBUTE[4]->{'ATTR-VALUE'}[0]->{'COL-VALUE'});
-    //----------------------------------------End Examples
+    //------------------------------------------End Examples
 
  ?>
  </body>
