@@ -9,10 +9,16 @@ date_default_timezone_set('UTC');
 use Aws\DynamoDb\Exception\DynamoDbException;
 use Aws\DynamoDb\Marshaler;
 
+$credentials = json_decode(file_get_contents('aws.credentials.json'), true);
+
+
 $sdk = new Aws\Sdk([
-    'endpoint'   => 'http://localhost:8000',
     'region'   => 'us-west-2',
-    'version'  => 'latest'
+    'version'  => 'latest',
+    'credentials' => [
+        'key'    => $credentials["AWS_KEY"],
+        'secret' => $credentials["AWS_SECRET"],
+    ],
 ]);
 
 $dynamodb = $sdk->createDynamoDb();
@@ -30,25 +36,23 @@ echo "\n\nhere\n\n";
 //     $title = $movie['title'];
 //     $info = $movie['info'];
 
-//     $json = json_encode([
-//         'year' => $year,
-//         'title' => $title,
-//         'info' => $info
-//     ]);
+     $json = json_encode([
+         'id' => "1",
+         'name' => "test"
+     ]);
 
-//     $params = [
-//         'TableName' => $tableName,
-//         'Item' => $marshaler->marshalJson($json)
-//     ];
+     $params = [
+         'TableName' => $tableName,
+         'Item' => $marshaler->marshalJson($json)
+     ];
 
-//     try {
-//         $result = $dynamodb->putItem($params);
-//         echo "Added movie: " . $movie['year'] . " " . $movie['title'] . "\n";
-//     } catch (DynamoDbException $e) {
-//         echo "Unable to add movie:\n";
-//         echo $e->getMessage() . "\n";
-//         break;
-//     }
+     try {
+         $result = $dynamodb->putItem($params);
+         echo "Added somethinf"."\n";
+     } catch (DynamoDbException $e) {
+         echo "Unable to add movie:\n";
+         echo $e->getMessage() . "\n";
+     }
 
 // }
 

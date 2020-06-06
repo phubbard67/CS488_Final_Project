@@ -1,2 +1,4 @@
 /dblp-data.xml
 vendor
+.idea
+aws.credentials.json
