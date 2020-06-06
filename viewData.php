@@ -4,8 +4,8 @@ include "AttributeRepository.php";
 include "LinksRepository.php";
 include "CsObject.php";
 
-//$xml_str = file_get_contents('sample.xml');
-$xml_str = file_get_contents('dblp-data.xml');
+$xml_str = file_get_contents('sample.xml');
+//$xml_str = file_get_contents('dblp-data.xml');
 
 //turn the xml string data into an object
 $data = new SimpleXMLElement($xml_str);
@@ -64,6 +64,10 @@ foreach ($allPeople as $index => $personId){
 
     foreach ($allLinksForPerson as $linkId => $linkedObjectId){
         echo $attributeRepository->getTypeOfItem($linkedObjectId)." with link ID ".$linkId." \n";
+        echo "This item has the following attributes: \n";
+        foreach ($attributeRepository->getAllAttributesForItem($linkedObjectId) as $label => $value){
+            echo "      ".$label."  ->  ".$value." \n";
+        }
     }
 
     if($index > 10) break;

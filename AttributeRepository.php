@@ -53,7 +53,7 @@ class AttributeRepository
     }
 
     public function getTypeOfItem($itemId){
-        return $this->indexGroup->getAttributeForItemId(strval($itemId))[0];
+        return $this->indexGroup->getAttributeForItemId(strval($itemId))[1];
     }
 
 }
