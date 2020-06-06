@@ -27,11 +27,16 @@ class Link
         return strval($this->object->attributes()->{'O2-ID'});
     }
 
+    //Return the object id that the link points to
     public function isObjectPartOfLink($objectId){
-        if($objectId === $this->obj1 || $objectId === $this->obj1)
-            return true;
+        if($objectId === $this->obj1){
+            return $this->obj2;
+        }
+        if($objectId === $this->obj1){
+            return $objectId === $this->obj2;
+        }
         else
-            return false;
+            return -1;
     }
 
 }

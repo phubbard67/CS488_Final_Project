@@ -23,9 +23,9 @@ class LinksRepository
     public function getAllLinksForItem($itemId){
         $itemLinks = [];
         foreach ($this->allLinks as $link){
-            $result = $link->isObjectPartOfLink($itemId);
-            if($result)
-                $itemLinks[] = $link->getLinkId();
+            $linkedObjId = $link->isObjectPartOfLink($itemId);
+            if($linkedObjId != -1)
+                $itemLinks[strval($link->getLinkId())] = strval($linkedObjId);
         }
         return $itemLinks;
     }

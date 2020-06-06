@@ -4,8 +4,8 @@ include "AttributeRepository.php";
 include "LinksRepository.php";
 include "CsObject.php";
 
-$xml_str = file_get_contents('sample.xml');
-//$xml_str = file_get_contents('dblp-data.xml');
+//$xml_str = file_get_contents('sample.xml');
+$xml_str = file_get_contents('dblp-data.xml');
 
 //turn the xml string data into an object
 $data = new SimpleXMLElement($xml_str);
@@ -42,28 +42,39 @@ foreach ($allAttributeGroups as $attributeGroup){
     echo $attributeGroup->getGroupName()." with ".count($attributeGroup->getAttributeValues())." items inside"."\n\n";
 }
 echo "------------------------------------------------------------------------\n\n";
-echo "The first 15 objects are:\n\n";
-foreach ($allObjects as $index => $object){
+
+// Can un-comment the below for de-bugging if needed
+//echo "The first 15 objects are:\n\n";
+//foreach ($allObjects as $index => $object){
+//    echo "\n\n\n";
+//    var_dump($attributeRepository->getAllAttributesForItem(strval($object->getObjectId())));
+//    var_dump($linksRepository->getAllLinksForItem(strval($object->getObjectId())));
+//    if($index > 15) break;
+//}
+
+$allPeople = $attributeRepository->getAllPeople();
+$allPapers = $attributeRepository->getAllPapers();
+
+// Demo getting all links for a person
+foreach ($allPeople as $index => $personId){
     echo "\n\n\n";
-    var_dump($attributeRepository->getAllAttributesForItem(strval($object->getObjectId())));
-    var_dump($linksRepository->getAllLinksForItem(strval($object->getObjectId())));
-//    echo $attributeGroup->getGroupName()." with ".count($attributeGroup->getAttributeValues())." items inside"."\n\n";
-    echo "hi";
-    if($index > 15) break;
+    $allLinksForPerson = $linksRepository->getAllLinksForItem(strval($personId));
+
+    echo "Person #".$personId." has the following links: \n";
+
+    foreach ($allLinksForPerson as $linkId => $linkedObjectId){
+        echo $attributeRepository->getTypeOfItem($linkedObjectId)." with link ID ".$linkId." \n";
+    }
+
+    if($index > 10) break;
 }
 
+// Idea for constructing the data object:
+
+// 1. Find all the people (done above)
+// 2. Get all the links for the people
+// 3. See what those links go to,
+// 4. Get those objects and put them into one consolidated object
+// 5. Send the consolidated object to DynamoDB
 
 
-
-
-//    $z = $object[4]->{'ATTR-VALUE'}[0];
-//    echo "\n\n";
-////    echo $object[4]->{'ATTR-VALUE'}[0]->{'COL-VALUE'};
-//    echo $z->attributes();
-//    var_dump($object);
-//
-//    echo "\n\nhi";
-//    var_dump($object[4]->{'ATTR-VALUE'}[0]);
-//    var_dump($object[4]->{'ATTR-VALUE'}[0]->{'COL-VALUE'});
-//    var_dump($object[4]->{'ATTR-VALUE'}[0]->{'ITEM-ID'});
-//    echo "la-ID: ".$object[4]->attributes()->{'O2-ID'}."\n";
