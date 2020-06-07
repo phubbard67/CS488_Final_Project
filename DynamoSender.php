@@ -10,7 +10,7 @@ use Aws\DynamoDb\Exception\DynamoDbException;
 use Aws\DynamoDb\Marshaler;
 
 class DynamoSender {
-    public function __construct(){
+    public function __construct($table){
         $credentials = json_decode(file_get_contents('aws.credentials.json'), true);
 
         $this->credentials = $credentials;
@@ -26,26 +26,23 @@ class DynamoSender {
         $this->dynamodb = $this->sdk->createDynamoDb();
         $this->marshaler = new Marshaler();
 
-        $this->tableName = 'cs488-cloud-project';
+        $this->tableName = $table;
 
     }
 
 
-    function storePersonInDynamo($person){
-//        $json = json_encode($person);
+    function storeItemInDynamo($person){
 
         $params = [
-            'TableName' => 'cs488-cloud-project',
+            'TableName' => $this->tableName,
             'Item' =>  $this->marshaler->marshalItem($person)
-//            'Item' => $this->marshaler->marshalJson($json)
         ];
 
-        echo "here";
         try {
             $result = $this->dynamodb->putItem($params);
-            echo "Added item"."\n";
+            echo "Added item to Dynamo"."\n";
         } catch (DynamoDbException $e) {
-            echo "Unable to add movie:\n";
+            echo "Unable to add item to dynamo:\n";
             echo $e->getMessage() . "\n";
         }
     }

@@ -42,7 +42,8 @@ echo "------------------------------------------------------------------------\n
 
 $allPeople = $attributeRepository->getAllPeople();
 $allPapers = $attributeRepository->getAllPapers();
-$dynamoSender = new DynamoSender();
+$dynamoPeopleSender = new DynamoSender("cs488-people");
+$dynamoPaperSender = new DynamoSender("cs488-papers");
 
 $allPeopleWithNestedInfo = [];
 
@@ -174,13 +175,13 @@ foreach ($allPeople as $index => $personId){
     }
 
     // Uncomment to send to dynamo
-    //    $dynamoSender->storePersonInDynamo($personInfo);
+    $dynamoPeopleSender->storeItemInDynamo($personInfo);
 
-//    var_dump($personInfo);
     echo "\nProcessing person #".$index."\n";
-    echo "\n".json_encode($personInfo)."\n";
+//    echo "\n".json_encode($personInfo)."\n";
 
-    if($index > 10) break;
+    // To remove limit from queries - uncomment this line
+//    if($index > 10) break;
 }
 echo "------------------------------------------------------------------------";
 echo "\n\n\n PAPERS!!!!!! \n\n\n";
@@ -273,12 +274,14 @@ foreach ($allPapers as $index => $paperId){
     $paperInfo["isInJournals"] = count($paperInfo["journals"]) > 0;
     $paperInfo["isInBooks"] = count($paperInfo["books"]) > 0;
 
-//    $dynamoSender->storePersonInDynamo($paperInfo);
-//    var_dump($personInfo);
-    echo "\nProcessing paper #".$index."\n";
-    echo json_encode($paperInfo)."\n";
+    // Uncomment to send to dynamo
+    $dynamoPaperSender->storeItemInDynamo($paperInfo);
 
-    if($index > 10) break;
+    echo "\nProcessing paper #".$index."\n";
+//    echo json_encode($paperInfo)."\n";
+
+    // To remove limit from queries - uncomment this line
+    //    if($index > 10) break;
 }
 
 
