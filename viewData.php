@@ -3,6 +3,7 @@
 include "AttributeRepository.php";
 include "LinksRepository.php";
 include "CsObject.php";
+include "DynamoSender.php";
 
 $xml_str = file_get_contents('sample.xml');
 //$xml_str = file_get_contents('dblp-data.xml');
@@ -19,16 +20,11 @@ foreach ($data->OBJECTS->OBJECT as $object){
 }
 
 $linksRepository = new LinksRepository($data->LINKS->LINK);
-$allLinks = $linksRepository->getAllLinks();
-//foreach ($data->LINKS->LINK as $object){
-//    $allLinks[] = new Link($object);
-//}
+//$allLinks = $linksRepository->getAllLinks();
 
 $attributeRepository = new AttributeRepository($data->ATTRIBUTES->ATTRIBUTE);
 $allAttributeGroups = $attributeRepository->getAllGroups();
-//foreach ($data->ATTRIBUTES->ATTRIBUTE as $object){
-//    $allAttributeGroups[] = new AttributeGroup($object);
-//}
+
 
 
 echo "                          Read-In The following: \n";
@@ -43,32 +39,134 @@ foreach ($allAttributeGroups as $attributeGroup){
 }
 echo "------------------------------------------------------------------------\n\n";
 
-// Can un-comment the below for de-bugging if needed
-//echo "The first 15 objects are:\n\n";
-//foreach ($allObjects as $index => $object){
-//    echo "\n\n\n";
-//    var_dump($attributeRepository->getAllAttributesForItem(strval($object->getObjectId())));
-//    var_dump($linksRepository->getAllLinksForItem(strval($object->getObjectId())));
-//    if($index > 15) break;
-//}
 
 $allPeople = $attributeRepository->getAllPeople();
 $allPapers = $attributeRepository->getAllPapers();
+$dynamoSender = new DynamoSender();
 
-// Demo getting all links for a person
+$allPeopleWithNestedInfo = [];
+
+
+//Loop through all people and get attributes
 foreach ($allPeople as $index => $personId){
     echo "\n\n\n";
     $allLinksForPerson = $linksRepository->getAllLinksForItem(strval($personId));
 
     echo "Person #".$personId." has the following links: \n";
 
+    $personInfo = [
+        "id" => strval($personId),
+        "papers" => [],
+        "proceedings" => [],
+        "www" => [],
+        "mthesis" => [],
+        "phdthesis" => [],
+        "books" => []
+    ];
+
     foreach ($allLinksForPerson as $linkId => $linkedObjectId){
         echo $attributeRepository->getTypeOfItem($linkedObjectId)." with link ID ".$linkId." \n";
-        echo "This item has the following attributes: \n";
-        foreach ($attributeRepository->getAllAttributesForItem($linkedObjectId) as $label => $value){
-            echo "      ".$label."  ->  ".$value." \n";
+//        echo "This item has the following attributes: \n";
+
+        $linkBetweenObjects = $attributeRepository->getAllAttributesForItem($linkId);
+        $linkedObject = $attributeRepository->getAllAttributesForItem($linkedObjectId);
+
+        switch($linkedObject["object-type"]){
+            case "paper":
+                echo "\nLINK INFO:\n";
+                var_dump($linkBetweenObjects);
+                $paper = [];
+                $paper["id"] = $linkedObjectId;
+                foreach ($linkedObject as $label => $value){
+//                    echo "      ".$label."  ->  ".$value." \n";
+                    $paper[$label] = $value;
+                }
+
+                if(array_key_exists("link-type", $linkBetweenObjects)){
+                    $paper["isAuthor"] = $linkBetweenObjects["link-type"] === "author-of";
+                    $paper["isEditor"] = $linkBetweenObjects["link-type"] === "editor-of";
+                }
+
+                $personInfo["papers"][] = $paper;
+                break;
+
+            case "proceedings":
+                $proceedings = [];
+                $proceedings["id"] = $linkedObjectId;
+                foreach ($linkedObject as $label => $value){
+                    $proceedings[$label] = $value;
+                }
+
+                if(array_key_exists("link-type", $linkBetweenObjects)){
+                    $proceedings["isAuthor"] = $linkBetweenObjects["link-type"] === "author-of";
+                    $proceedings["isEditor"] = $linkBetweenObjects["link-type"] === "editor-of";
+                }
+
+                $personInfo["proceedings"][] = $proceedings;
+                break;
+
+            case "www":
+                $www = [];
+                $www["id"] = $linkedObjectId;
+                foreach ($linkedObject as $label => $value){
+                    $www[$label] = $value;
+                }
+
+                if(array_key_exists("link-type", $linkBetweenObjects)){
+                    $www["isAuthor"] = $linkBetweenObjects["link-type"] === "author-of";
+                    $www["isEditor"] = $linkBetweenObjects["link-type"] === "editor-of";
+                }
+
+                $personInfo["www"][] = $www;
+                break;
+
+            case "msthesis":
+                $mthesis = [];
+                $mthesis["id"] = $linkedObjectId;
+                foreach ($linkedObject as $label => $value){
+                    $mthesis[$label] = $value;
+                }
+
+                if(array_key_exists("link-type", $linkBetweenObjects)){
+                    $mthesis["isAuthor"] = $linkBetweenObjects["link-type"] === "author-of";
+                    $mthesis["isEditor"] = $linkBetweenObjects["link-type"] === "editor-of";
+                }
+
+                $personInfo["mthesis"][] = $mthesis;
+                break;
+            case "phdthesis":
+                $phdthesis = [];
+                $phdthesis["id"] = $linkedObjectId;
+                foreach ($linkedObject as $label => $value){
+                    $phdthesis[$label] = $value;
+                }
+
+                if(array_key_exists("link-type", $linkBetweenObjects)){
+                    $phdthesis["isAuthor"] = $linkBetweenObjects["link-type"] === "author-of";
+                    $phdthesis["isEditor"] = $linkBetweenObjects["link-type"] === "editor-of";
+                }
+
+                $personInfo["phdthesis"][] = $phdthesis;
+                break;
+            case "book":
+                $book = [];
+                $book["id"] = $linkedObjectId;
+                foreach ($linkedObject as $label => $value){
+                    $book[$label] = $value;
+                }
+
+                if(array_key_exists("link-type", $linkBetweenObjects)){
+                    $book["isAuthor"] = $linkBetweenObjects["link-type"] === "author-of";
+                    $book["isEditor"] = $linkBetweenObjects["link-type"] === "editor-of";
+                }
+
+                $personInfo["books"][] = $book;
+                break;
         }
     }
+    $dynamoSender->storePersonInDynamo($personInfo);
+//    var_dump($personInfo);
+    echo "\n".json_encode($personInfo)."\n";
 
     if($index > 10) break;
 }
