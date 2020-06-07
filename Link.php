@@ -32,8 +32,8 @@ class Link
         if($objectId === $this->obj1){
             return $this->obj2;
         }
-        if($objectId === $this->obj1){
-            return $objectId === $this->obj2;
+        if($objectId === $this->obj2){
+            return $this->obj1;
         }
         else
             return -1;

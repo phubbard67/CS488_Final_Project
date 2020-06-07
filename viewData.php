@@ -47,12 +47,19 @@ $dynamoSender = new DynamoSender();
 $allPeopleWithNestedInfo = [];
 
 
+// Idea for constructing the data object:
+
+// 1. Find all the people (done above)
+// 2. Get all the links for the people
+// 3. See what those links go to,
+// 4. Get those objects and put them into one consolidated object
+// 5. Send the consolidated object to DynamoDB
+
+
+
 //Loop through all people and get attributes
 foreach ($allPeople as $index => $personId){
-    echo "\n\n\n";
     $allLinksForPerson = $linksRepository->getAllLinksForItem(strval($personId));
-
-    echo "Person #".$personId." has the following links: \n";
 
     $personInfo = [
         "id" => strval($personId),
@@ -64,21 +71,22 @@ foreach ($allPeople as $index => $personId){
         "books" => []
     ];
 
+    $personAttributes = $attributeRepository->getAllAttributesForItem(strval($personId));
+    foreach ($personAttributes as $label => $value){
+        $personInfo[$label] = $value;
+    }
+
     foreach ($allLinksForPerson as $linkId => $linkedObjectId){
         echo $attributeRepository->getTypeOfItem($linkedObjectId)." with link ID ".$linkId." \n";
-//        echo "This item has the following attributes: \n";
 
         $linkBetweenObjects = $attributeRepository->getAllAttributesForItem($linkId);
         $linkedObject = $attributeRepository->getAllAttributesForItem($linkedObjectId);
 
         switch($linkedObject["object-type"]){
             case "paper":
-                echo "\nLINK INFO:\n";
-                var_dump($linkBetweenObjects);
                 $paper = [];
                 $paper["id"] = $linkedObjectId;
                 foreach ($linkedObject as $label => $value){
-//                    echo "      ".$label."  ->  ".$value." \n";
                     $paper[$label] = $value;
                 }
 
@@ -164,19 +172,114 @@ foreach ($allPeople as $index => $personId){
                 break;
         }
     }
-    $dynamoSender->storePersonInDynamo($personInfo);
+
+    // Uncomment to send to dynamo
+    //    $dynamoSender->storePersonInDynamo($personInfo);
+
 //    var_dump($personInfo);
+    echo "\nProcessing person #".$index."\n";
     echo "\n".json_encode($personInfo)."\n";
 
     if($index > 10) break;
 }
+echo "------------------------------------------------------------------------";
+echo "\n\n\n PAPERS!!!!!! \n\n\n";
+echo "------------------------------------------------------------------------\n\n";
 
-// Idea for constructing the data object:
+//Loop through all people and get attributes
+foreach ($allPapers as $index => $paperId){
+    echo "\n\n\n";
+    $allLinksForPaper = $linksRepository->getAllLinksForItem(strval($paperId));
 
-// 1. Find all the people (done above)
-// 2. Get all the links for the people
-// 3. See what those links go to,
-// 4. Get those objects and put them into one consolidated object
-// 5. Send the consolidated object to DynamoDB
+    $paperInfo = [
+        "id" => strval($paperId),
+        "isInBooks" => false,
+        "isInProceedings" => false,
+        "isInJournals" => false,
+        "authors" => [],
+        "proceedings" => [],
+        "www" => [],
+        "books" => []
+    ];
+
+    // Add all the attributes of the "paper"
+    $paperAttributes = $attributeRepository->getAllAttributesForItem(strval($paperId));
+    foreach ($paperAttributes as $label => $value){
+        $paperInfo[$label] = $value;
+    }
+
+    foreach ($allLinksForPaper as $linkId => $linkedObjectId){
+        $linkBetweenObjects = $attributeRepository->getAllAttributesForItem($linkId);
+        $linkedObject = $attributeRepository->getAllAttributesForItem($linkedObjectId);
+
+        switch($linkedObject["object-type"]){
+            case "person":
+                $author = [];
+                $author["id"] = $linkedObjectId;
+                foreach ($linkedObject as $label => $value){
+                    $author[$label] = $value;
+                }
+
+                $paperInfo["authors"][] = $author;
+                break;
+
+
+            case "proceedings":
+                $proceedings = [];
+                $proceedings["id"] = $linkedObjectId;
+                foreach ($linkedObject as $label => $value){
+                    $proceedings[$label] = $value;
+                }
+
+                $paperInfo["proceedings"][] = $proceedings;
+                break;
+
+            case "journal":
+                $journal = [];
+                $journal["id"] = $linkedObjectId;
+                foreach ($linkedObject as $label => $value){
+                    $journal[$label] = $value;
+                }
+
+                $paperInfo["journals"][] = $journal;
+                break;
+
+            case "www":
+                $www = [];
+                $www["id"] = $linkedObjectId;
+                foreach ($linkedObject as $label => $value){
+                    $www[$label] = $value;
+                }
+
+                $paperInfo["www"][] = $www;
+                break;
+
+
+            case "book":
+                $book = [];
+                $book["id"] = $linkedObjectId;
+                foreach ($linkedObject as $label => $value){
+                    $book[$label] = $value;
+                }
+
+                $paperInfo["books"][] = $book;
+                break;
+        }
+    }
+
+
+
+    $paperInfo["isInProceedings"] = count($paperInfo["proceedings"]) > 0;
+    $paperInfo["isInJournals"] = count($paperInfo["journals"]) > 0;
+    $paperInfo["isInBooks"] = count($paperInfo["books"]) > 0;
+
+//    $dynamoSender->storePersonInDynamo($paperInfo);
+//    var_dump($personInfo);
+    echo "\nProcessing paper #".$index."\n";
+    echo json_encode($paperInfo)."\n";
+
+    if($index > 10) break;
+}
+
 
 

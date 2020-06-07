@@ -1,3 +1,5 @@
+<?php
+$xmlstr = <<<XML
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE PROX3DB SYSTEM "prox3db.dtd">
 <PROX3DB>
@@ -154,6 +156,7 @@
         <LINK ID="45" O1-ID="3" O2-ID="1185275"/>
         <LINK ID="46" O1-ID="728538" O2-ID="4"/>
         <LINK ID="47" O1-ID="728539" O2-ID="4"/>
+        <LINK ID="4702" O1-ID="2" O2-ID="5050550"/>
         <LINK ID="48" O1-ID="4" O2-ID="1185275"/>
         <LINK ID="49" O1-ID="728540" O2-ID="5"/>
         <LINK ID="50" O1-ID="5" O2-ID="1185275"/>
@@ -236,17 +239,77 @@
             <ATTR-VALUE ITEM-ID="768022">
                 <COL-VALUE>person</COL-VALUE>
             </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728512">
+                <COL-VALUE>person</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728540">
+                <COL-VALUE>person</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728541">
+                <COL-VALUE>person</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728542">
+                <COL-VALUE>person</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728543">
+                <COL-VALUE>person</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728544">
+                <COL-VALUE>person</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728545">
+                <COL-VALUE>person</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728546">
+                <COL-VALUE>person</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728547">
+                <COL-VALUE>person</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728533">
+                <COL-VALUE>person</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728549">
+                <COL-VALUE>person</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="1185275">
+                <COL-VALUE>journal</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="1200023">
+                <COL-VALUE>msthesis</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728538">
+                <COL-VALUE>person</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="5050550">
+                <COL-VALUE>book</COL-VALUE>
+            </ATTR-VALUE>
 		</ATTRIBUTE>
 		
 		<ATTRIBUTE NAME="link-type" ITEM-TYPE="L" DATA-TYPE="str">
             <ATTRVALUE ITEM-ID="1">
                 <COL-VALUE>author-of</COL-VALUE>
             </ATTRVALUE>
+            <ATTR-VALUE ITEM-ID="2">
+                <COL-VALUE>author-of</COL-VALUE>
+            </ATTR-VALUE>
             <ATTR-VALUE ITEM-ID="10">
                 <COL-VALUE>editor-of</COL-VALUE>
             </ATTR-VALUE>
             <ATTR-VALUE ITEM-ID="768022">
                 <COL-VALUE>author-of</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728533">
+                <COL-VALUE>author-of</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728512">
+                <COL-VALUE>author-of</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728538">
+                <COL-VALUE>author-of</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="5050550">
+                <COL-VALUE>in-collection</COL-VALUE>
             </ATTR-VALUE>
         </ATTRIBUTE>
 		
@@ -279,6 +342,12 @@
            <ATTR-VALUE ITEM-ID="768022">
                 <COL-VALUE>Arpad Kelemen</COL-VALUE>
            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728512">
+                <COL-VALUE>Kurt P. Brown</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="728538">
+                <COL-VALUE>Subrata Dasgupta</COL-VALUE>
+            </ATTR-VALUE>
         </ATTRIBUTE>
 
 		<ATTRIBUTE NAME="publisher" ITEM-TYPE="O" DATA-TYPE="str">
@@ -318,6 +387,9 @@
             </ATTR-VALUE>
             <ATTR-VALUE ITEM-ID="578172">
                 <COL-VALUE>Adaptive Generalized Estimation Equation with Bayes Classifier for the Job Assignment Problem.</COL-VALUE>
+            </ATTR-VALUE>
+            <ATTR-VALUE ITEM-ID="2">
+                <COL-VALUE>Computer Design and Description Languages.</COL-VALUE>
             </ATTR-VALUE>
        </ATTRIBUTE>
 
