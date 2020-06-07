@@ -56,7 +56,12 @@ $allPeopleWithNestedInfo = [];
 // 4. Get those objects and put them into one consolidated object
 // 5. Send the consolidated object to DynamoDB
 
-
+echo "------------------------------------------------------------------------\n";
+echo "\n\n\nALL PEOPLE COUNT = ".count($allPeople)."\n\n\n";
+echo "------------------------------------------------------------------------\n";
+echo "------------------------------------------------------------------------\n";
+echo "\n\n\nALL PAPERS COUNT = ".count($allPapers)."\n\n\n";
+echo "------------------------------------------------------------------------\n";
 
 //Loop through all people and get attributes
 foreach ($allPeople as $index => $personId){
@@ -175,17 +180,19 @@ foreach ($allPeople as $index => $personId){
     }
 
     // Uncomment to send to dynamo
-    $dynamoPeopleSender->storeItemInDynamo($personInfo);
+//    $dynamoPeopleSender->storeItemInDynamo($personInfo);
 
     echo "\nProcessing person #".$index."\n";
-//    echo "\n".json_encode($personInfo)."\n";
+
+    echo "\n".json_encode($personInfo)."\n";
 
     // To remove limit from queries - uncomment this line
-//    if($index > 10) break;
+    if($index > 10) break;
 }
 echo "------------------------------------------------------------------------";
 echo "\n\n\n PAPERS!!!!!! \n\n\n";
 echo "------------------------------------------------------------------------\n\n";
+
 
 //Loop through all people and get attributes
 foreach ($allPapers as $index => $paperId){
@@ -275,13 +282,13 @@ foreach ($allPapers as $index => $paperId){
     $paperInfo["isInBooks"] = count($paperInfo["books"]) > 0;
 
     // Uncomment to send to dynamo
-    $dynamoPaperSender->storeItemInDynamo($paperInfo);
+//    $dynamoPaperSender->storeItemInDynamo($paperInfo);
 
     echo "\nProcessing paper #".$index."\n";
-//    echo json_encode($paperInfo)."\n";
+    echo json_encode($paperInfo)."\n";
 
     // To remove limit from queries - uncomment this line
-    //    if($index > 10) break;
+        if($index > 10) break;
 }
 
 
