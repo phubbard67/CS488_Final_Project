@@ -5,8 +5,8 @@ include "LinksRepository.php";
 include "CsObject.php";
 include "DynamoSender.php";
 
-$xml_str = file_get_contents('sample.xml');
-//$xml_str = file_get_contents('dblp-data.xml');
+//$xml_str = file_get_contents('sample.xml');
+$xml_str = file_get_contents('dblp-data.xml');
 
 //turn the xml string data into an object
 $data = new SimpleXMLElement($xml_str);
