@@ -58,6 +58,12 @@ $allPeopleWithNestedInfo = [];
 
 //Loop through all people and get attributes
 foreach ($allPeople as $index => $personId){
+
+
+    if($index < 200000 || $index > 220000){ continue; }
+
+    echo "\nProcessing person #".$index." with id# ".$personId."\n";
+
     $allLinksForPerson = $linksRepository->getAllLinksForItem(strval($personId));
 
     $personInfo = [
@@ -175,7 +181,6 @@ foreach ($allPeople as $index => $personId){
     // Uncomment to send to dynamo
     $dynamoPeopleSender->storeItemInDynamo($personInfo);
 
-    echo "\nProcessing person #".$index."\n";
 //    echo "\n".json_encode($personInfo)."\n";
 
 }
