@@ -22,20 +22,56 @@ $client = DynamoDbClient::factory(array(
     ]
 ));
 
-$iterator = $client->getIterator('Query', array(
-    'TableName'     => 'cs488-papers',
+//Query 3: Co-author distance: At what level is Moshe Vardi from Michael J. Franklin?
+$moshes = $client->getIterator('Query', array(
+    'TableName'     => 'cs488-people',
     'KeyConditions' => array (
         'id' => array (
             'AttributeValueList' => array(
-                array('S' => '101037')
+                array('S' => '729526')
             ),
             'ComparisonOperator' => 'EQ'
         )
     )
 ));
 
+$franklins = $client->getIterator('Query', array(
+    'TableName'     => 'cs488-people',
+    'KeyConditions' => array (
+        'id' => array (
+            'AttributeValueList' => array(
+                array('S' => '747452')
+            ),
+            'ComparisonOperator' => 'EQ'
+        )
+    )
+));
+
+// $frankPapers = $client->query(array (
+//     'TableName' => 'cs488-people',
+//     'IndexName' => 'id',
+//     'Select'    => 'ALL_ATTRIBUTES',
+//     'KeyConditions' => array (
+//         'id' => array (
+//             'AttributeValueList' => array(
+//                 array('S' => '747452')
+//             ),
+//             'ComparisonOperator' => 'EQ'
+//         )
+//     )
+
+// ));
+
+// var_dump($frankPapers);
+
 // Each item will contain the attributes we added
-foreach ($iterator as $item) {
+foreach ($moshes as $moshe) {
+    $i = 0;
     // Grab the time number value
-    echo $item['title']['S'] . "\n";
+    echo $moshe['name']['S'] . "\n";
+    foreach ($franklins as $franklin) {
+        // Grab the time number value
+      echo $franklin['papers => title']['S'];
+    }
 }
+
